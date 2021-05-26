@@ -30,4 +30,93 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  helpers:
+    submit:
+      user:
+        create: 'Add'
+    show: 'Show'
+    back: 'Back'
+  activerecord:
+    attributes:
+      user:
+        email: 'Email'
+        name: 'Name'
+        password: 'Password'
+        password_confirmation: 'Confirm'
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "must not be blank."
+              invalid: "must be valid."
+              taken: "already in use. Must be unique."
+  models:
+    users: "Users"
+    account: 'Account'
+    locations: 'Locations'
+  users:
+    form:
+      info: 'User Information'
+    index:
+      all: 'All'
+      heading: "Manage Users"
+      column_head_email: "Email"
+      column_head_name: "Name"
+      column_head_created: "Created"
+      no_users: "No Users"
+    new:
+      heading: "Add a User"
+      field_label_email: "Email"
+      email_invalid: "Please enter a valid email address."
+      form_submit_text: "Add"
+    edit:
+      heading: "Edit User"
+      change_my_password: "Submit"
+      password_requirements: "Passwords must be at least %{minimum} characters, and contain a number, an uppercase and a lowercase letter."
+      password_invalid: "Password is not valid - it must be at least %{minimum} characters, and contain both a number, an uppercase and a lowercase letter"
+      passwords_dont_match: "Passwords do not match"
+      create_password_heading: "Choose a password for your Free Cooling Account"
+      change_password_heading: "Change your password"
+      email: 'Email'
+    show:
+      heading: "User: %{user_name}"
+    update:
+      default: 'User was successfully updated.'
+    destroy:
+      default: 'User was successfully deleted.'
+    errors:
+      save_error:
+        one: "An error prohibited this user from being saved:"
+        other: "%{count} errors prohibited this user from being saved:"
+      password_too_short: "is less than %{minimum} characters."
+      password_no_number: "does not contain a number."
+      password_no_lowercase: "does not contain a lowercase letter."
+      password_no_uppercase: "does not contain a uppercase letter."
+      invalid_email_or_password: "Please enter a valid email address and password."
+  time:
+    formats:
+      full: "%B %e, %Y   %l:%M %P"
+      date_only: "%B %e, %Y"
+  buttons:
+    add: "Add"
+    back: "Back"
+    cancel: "Cancel"
+    delete: 'Delete'
+    dismiss: 'Dismiss'
+    suspend: 'Suspend'
+    unsuspend: 'Unsuspend'
+    password_reset: 'Send Password Reset'
+  address:
+    street1: "Address 1"
+    street2: "Address 2"
+    city: "City"
+    state_province: "State/Province"
+    postal_code: "Postal Code"
+    country: "Country"
+    label: "Address:"
+  mailer:
+    errors:
+      not_sent:
+        one: "An error prevented an email from being sent:"
+        other: "%{count} errors prevented an email from being sent:"
