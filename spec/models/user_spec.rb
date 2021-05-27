@@ -56,29 +56,29 @@ RSpec.describe User, type: :model do
 
     context 'password does not contain a lowercase letter' do
       it 'fails validation with correct message' do
-        user.password = '123456A'
+        user.password = '1234567A'
         expect(user).to be_invalid
         user.save
-        expect(user.errors.messages[:password]).to include(I18n.t('users.errors.password_no_letter'))
+        expect(user.errors.messages[:password]).to include(I18n.t('users.errors.password_no_lowercase'))
       end
     end
 
     context 'password does not contain an uppercase letter' do
       it 'fails validation with correct message' do
-        user.password = '123456a'
+        user.password = '1234567a'
         expect(user).to be_invalid
         user.save
-        expect(user.errors.messages[:password]).to include(I18n.t('users.errors.password_no_letter'))
+        expect(user.errors.messages[:password]).to include(I18n.t('users.errors.password_no_uppercase'))
       end
     end
 
     context 'password meets standards' do
       it 'fails validation with correct message' do
         user.password = '123456Aa'
-        expect(user).to be_valid
         expect do
           user.save
-        end.to_change(User.all, :size).by(1)
+        end.to change(User.all, :size).by(1)
+        expect(user).to be_valid
       end
     end
   end
