@@ -59,8 +59,8 @@ ActiveRecord::Schema.define(version: 2021_05_23_205532) do
   create_table "phones", force: :cascade do |t|
     t.string "phone_number"
     t.boolean "alertable"
-    t.time "alert_after"
-    t.time "alert_before"
+    t.integer "enable_alert_at_mins_after_midnight"
+    t.integer "disable_alert_at_mins_after_midnight"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2021_05_23_205532) do
 
   create_table "recommendations", force: :cascade do |t|
     t.datetime "timestamp"
-    t.boolean "open"
+    t.boolean "free_cooling_available"
     t.bigint "indoor_sensor_id", null: false
     t.bigint "weather_reading_id", null: false
     t.datetime "created_at", precision: 6, null: false
