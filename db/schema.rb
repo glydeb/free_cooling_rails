@@ -15,13 +15,6 @@ ActiveRecord::Schema.define(version: 2021_05_23_205532) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "accounts", force: :cascade do |t|
-    t.integer "owner_id"
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "indoor_sensor_readings", force: :cascade do |t|
     t.datetime "timestamp"
     t.decimal "dry_bulb"
@@ -38,11 +31,11 @@ ActiveRecord::Schema.define(version: 2021_05_23_205532) do
     t.bigint "location_id", null: false
     t.string "access_token"
     t.string "name"
-    t.bigint "account_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["account_id"], name: "index_indoor_sensors_on_account_id"
     t.index ["location_id"], name: "index_indoor_sensors_on_location_id"
+    t.index ["user_id"], name: "index_indoor_sensors_on_user_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -81,7 +74,6 @@ ActiveRecord::Schema.define(version: 2021_05_23_205532) do
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.bigint "account_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email", default: "", null: false
@@ -89,7 +81,6 @@ ActiveRecord::Schema.define(version: 2021_05_23_205532) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.index ["account_id"], name: "index_users_on_account_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -106,11 +97,10 @@ ActiveRecord::Schema.define(version: 2021_05_23_205532) do
   end
 
   add_foreign_key "indoor_sensor_readings", "indoor_sensors"
-  add_foreign_key "indoor_sensors", "accounts"
   add_foreign_key "indoor_sensors", "locations"
+  add_foreign_key "indoor_sensors", "users"
   add_foreign_key "phones", "users"
   add_foreign_key "recommendations", "indoor_sensors"
   add_foreign_key "recommendations", "weather_readings"
-  add_foreign_key "users", "accounts"
   add_foreign_key "weather_readings", "locations"
 end

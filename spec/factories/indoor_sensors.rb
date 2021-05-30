@@ -5,6 +5,6 @@ FactoryBot.define do
     location
     sequence(:access_token) { |n| "device #{n} access_token" }
     sequence(:name) { |n| "device #{n} name" }
-    account
+    user
   end
 end

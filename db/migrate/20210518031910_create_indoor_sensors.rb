@@ -6,7 +6,7 @@ class CreateIndoorSensors < ActiveRecord::Migration[6.1]
       t.references :location, null: false, foreign_key: true
       t.string :access_token
       t.string :name
-      t.references :account, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: true
 
       t.timestamps
     end

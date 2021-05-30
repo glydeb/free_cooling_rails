@@ -5,7 +5,6 @@ RSpec.describe User, type: :model do
   let (:user) { build(:user) }
 
   it 'has a valid base factory' do
-    user.save
     expect(user).to be_valid
   end
 
