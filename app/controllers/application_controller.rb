@@ -9,5 +9,5 @@ class ApplicationController < ActionController::Base
       format.xml  { head :not_found }
       format.any  { head :not_found }
     end
-  en
+  end
 end

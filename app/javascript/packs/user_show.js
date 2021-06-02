@@ -53,20 +53,22 @@
 //
 // Then uncomment the code block below:
 //
-import TurbolinksAdapter from 'vue-turbolinks'
 import Vue from 'vue/dist/vue.esm'
-import App from '../app.vue'
+import TurbolinksAdapter from 'vue-turbolinks'
+import VueResource from 'vue-resource'
 
+Vue.use(Vue)
 Vue.use(TurbolinksAdapter)
 
 document.addEventListener('turbolinks:load', () => {
-  const app = new Vue({
-    el: '#hello',
-    data: () => {
-      return {
-        message: "Can you say hello?"
-      }
-    },
-    components: { App }
-  })
+  var element = document.getElementById("user-display")
+
+  if (element != null) {
+
+    const app = new Vue({
+      el: element,
+      mixins: [TurbolinksAdapter]
+    })
+
+  }
 })
