@@ -57,18 +57,20 @@ import Vue from 'vue/dist/vue.esm'
 import TurbolinksAdapter from 'vue-turbolinks'
 import VueResource from 'vue-resource'
 
-Vue.use(Vue)
+Vue.use(VueResource)
 Vue.use(TurbolinksAdapter)
 
 document.addEventListener('turbolinks:load', () => {
-  var element = document.getElementById("user-display")
+  var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  Vue.http.headers.common['X-CSRF-Token'] = csrfToken;
+  var element = document.getElementById("user-display");
 
   if (element != null) {
 
     const app = new Vue({
       el: element,
       mixins: [TurbolinksAdapter]
-    })
+    });
 
-  }
+  };
 })
