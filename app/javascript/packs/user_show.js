@@ -63,13 +63,20 @@ Vue.use(TurbolinksAdapter)
 document.addEventListener('turbolinks:load', () => {
   var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   Vue.http.headers.common['X-CSRF-Token'] = csrfToken;
-  var element = document.getElementById("user-display");
+  var element = document.getElementById("user-show");
 
   if (element != null) {
 
-    const app = new Vue({
+    var user =    JSON.parse(element.dataset.user)
+    var phones =  JSON.parse(element.dataset.phones)
+    var sensors = JSON.parse(element.dataset.sensors)
+
+    var app = new Vue({
       el: element,
-      mixins: [TurbolinksAdapter]
+      mixins: [TurbolinksAdapter],
+      data: function() {
+        return { user: user, phones: phones, sensors: sensors }
+      }
     });
 
   };

@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :indoor_sensors
+  has_many :phones
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

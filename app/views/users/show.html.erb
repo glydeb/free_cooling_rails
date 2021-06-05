@@ -1,4 +1,11 @@
-<div class="container">
+<%= content_tag :div,
+  id: "user-show",
+  data: {
+    user: current_user.to_json,
+    phones: @phones.to_json,
+    sensors: @sensors.to_json,
+  } do %>
+
     <form id="setup">
       <div class="row">
         <div class="col-md-4">
@@ -84,4 +91,5 @@
       <p><span ng-show="findLocation">Querying Google API for location...{{findLocationResult}} {{location.lat}}, {{location.long}}</span></p>
       <p><span ng-show="storeUser">Storing device &amp; user settings...{{storeUserResult}}</span></p>
     </div>
-</div>
+
+<%end%>
